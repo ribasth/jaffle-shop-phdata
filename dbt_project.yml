@@ -34,3 +34,8 @@ models:
       +schema: marts
       +database: "jaffle_shop_{{ env_var('DBT_SNOWFLAKE_ENV') }}"
       +materialized: table
+
+seeds:
+  jaffle_shop:
+    +schema: seed
+    +database: "jaffle_shop_{{ env_var('DBT_SNOWFLAKE_ENV') }}"
