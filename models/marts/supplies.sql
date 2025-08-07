@@ -1,6 +1,4 @@
-with
-
-supplies as (
+with supplies as (
 
     select * from {{ ref('stg_supplies') }}
 

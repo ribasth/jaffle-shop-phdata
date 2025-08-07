@@ -5,7 +5,7 @@ version: "3.0.0"
 require-dbt-version: ">=1.5.0"
 
 dbt-cloud:
-  project-id: 275557 # Put your project id here
+  project-id: 246606 # Put your project id here
 
 profile: default # Put your profile here
 
@@ -24,15 +24,13 @@ clean-targets:
 vars:
   "dbt_date:time_zone": "America/Los_Angeles"
 
-seeds:
-  jaffle_shop:
-    +schema: raw
-    jaffle-data:
-      +enabled: "{{ var('load_source_data', false) }}"
-
 models:
   jaffle_shop:
     staging:
+      +schema: stg
+      +database: "jaffle_shop_{{ env_var('DBT_SNOWFLAKE_ENV') }}"
       +materialized: view
     marts:
+      +schema: marts
+      +database: "jaffle_shop_{{ env_var('DBT_SNOWFLAKE_ENV') }}"
       +materialized: table
