@@ -28,7 +28,9 @@ models:
   jaffle_shop:
     staging:
       +schema: stg
+      +database: "jaffle_shop_{{ env_var('DBT_SNOWFLAKE_ENV') }}"
       +materialized: view
     marts:
       +schema: marts
+      +database: "jaffle_shop_{{ env_var('DBT_SNOWFLAKE_ENV') }}"
       +materialized: table
